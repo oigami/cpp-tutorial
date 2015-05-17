@@ -72,7 +72,7 @@ public:
 DxGraph::DxGraph(std::string fileName)
 {
 	// LoadGraph() 関数で画像を読み込む
-	handle.reset(new int(LoadGraph(fileName.c_str())), [](int *h) { DeleteGraph(*h); });
+	handle.reset(new int(LoadGraph(fileName.c_str())), [](int *h) { DeleteGraph(*h); delete h; });
 	if (*handle == -1)
 		throw "LoadGraph: 画像読み込みエラー";
 }
